@@ -46,6 +46,65 @@ def engels(inp, say=None):
     except:
         pass
 
+@hook.command(autohelp=False)
+def tpb(inp, say=None):
+    try:
+        response = http.get_json('https://q.beanteam.org/api/tpb/random')
+        full_text = "{}: {}".format(response['author'], response['quote'])
+        text_list = split_text(full_text)
+        for block in text_list:
+            say(block)        
+        return
+    except:
+        pass
+
+@hook.command(autohelp=False)
+def ricky(inp, say=None):
+    try:
+        response = http.get_json('https://q.beanteam.org/api/tpb/ricky')
+        full_text = "{}".format(response['quote'])
+        text_list = split_text(full_text)
+        for block in text_list:
+            say(block)        
+        return
+    except:
+        pass
+
+@hook.command(autohelp=False)
+def lahey(inp, say=None):
+    try:
+        response = http.get_json('https://q.beanteam.org/api/tpb/lahey')
+        full_text = "{}".format(response['quote'])
+        text_list = split_text(full_text)
+        for block in text_list:
+            say(block)        
+        return
+    except:
+        pass
+
+@hook.command(autohelp=False)
+def bubbles(inp, say=None):
+    try:
+        response = http.get_json('https://q.beanteam.org/api/tpb/bubbles')
+        full_text = "{}".format(response['quote'])
+        text_list = split_text(full_text)
+        for block in text_list:
+            say(block)        
+        return
+    except:
+        pass
+
+@hook.command(autohelp=False)
+def jroc(inp, say=None):
+    try:
+        response = http.get_json('https://q.beanteam.org/api/tpb/jroc')
+        full_text = "{}".format(response['quote'])
+        text_list = split_text(full_text)
+        for block in text_list:
+            say(block)        
+        return
+    except:
+        pass
 
 def split_text(text, max_length=500):
     words = text.split()
