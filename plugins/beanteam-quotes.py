@@ -106,6 +106,18 @@ def jroc(inp, say=None):
     except:
         pass
 
+@hook.command(autohelp=False)
+def hicks(inp, say=None):
+    try:
+        response = http.get_json('https://q.beanteam.org/api/hicks/random')
+        full_text = "{}".format(response['quote'])
+        text_list = split_text(full_text)
+        for block in text_list:
+            say(block)        
+        return
+    except:
+        pass
+
 def split_text(text, max_length=500):
     words = text.split()
     result = []
