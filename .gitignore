@@ -13,3 +13,4 @@ web
 .vscode/
 .idea/
 venv
+log.log
