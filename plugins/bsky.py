@@ -26,8 +26,8 @@ def bsky_post(match, say=None, api_key=None):
     post = client.get_post(post_id, did)
 
     sane_time = datetime.strptime(post.value.created_at, '%Y-%m-%dT%H:%M:%S.%fZ')
-    sane_time = sane_time.astimezone(timezone('America/New_York')).strftime('%B %d, %Y %I:%M %p')
+    sane_time = sane_time.astimezone(timezone('America/New_York')).strftime('%m-%d-%Y')
 
-    reply = f"^ @{bsky_profile} - {post.value.text} - {sane_time}"
+    reply = f"^ @{bsky_profile} - {post.value.text} [{sane_time}]"
 
     return reply
