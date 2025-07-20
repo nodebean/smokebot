@@ -85,8 +85,9 @@ def format_forecast(u_time, conditions, temp, tzoffset):
     return f_forecast 
 
 @hook.api_key("google", "pirateweather")
+@hook.command("w",autohelp=False)
 @hook.command(autohelp=False)
-def pirate(inp, chan="", nick="", reply=None, db=None, api_key=None):
+def weather(inp, chan="", nick="", reply=None, db=None, api_key=None):
     """.weather <location> [dontsave] | @<nick> -- Get weather data."""
     if "google" not in api_key and "pirateweather" not in api_key:
         return None
