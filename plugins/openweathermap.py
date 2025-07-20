@@ -91,9 +91,8 @@ def make_dayname(utcts, tzoffset):
     
 
 @hook.api_key("google", "openweathermap")
-@hook.command("w",autohelp=False)
 @hook.command(autohelp=False)
-def weather(inp, chan="", nick="", reply=None, db=None, api_key=None):
+def oldweather(inp, chan="", nick="", reply=None, db=None, api_key=None):
     """.weather <location> [dontsave] | @<nick> -- Get weather data."""
     if "google" not in api_key and "openweathermap" not in api_key:
         return None
