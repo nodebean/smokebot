@@ -43,6 +43,10 @@ def mph_to_kph(mph):
     """Convert mph to kph."""
     return mph * 1.609
 
+def mph_to_mps(mph):
+    """Convert kph to mps."""
+    return mph * 0.44704
+
 
 def next_unix_times(timezone_str):
     # Define the times to check
@@ -168,9 +172,7 @@ def weather(inp, chan="", nick="", reply=None, db=None, api_key=None):
         "feels_like_c": f_to_c(current["apparentTemperature"]),
         "weather": current["summary"],
         "humid": int(current["humidity"] * 100),
-        "wind": "Wind: {mph:.1f}mph/{kph:.1f}kph".format(
-            mph=current["windSpeed"], kph=mph_to_kph(current["windSpeed"])
-        ),
+        "wind": "Wind: {mph:.1f}mph/{kph:.1f}kph/{mps:.1f}mps".format(mph=current["windSpeed"], kph=mph_to_kph(current["windSpeed"]), mps=mph_to_mps(current["windSpeed"])),
         "forecast": parsed_json.get("hourly", {}).get("summary", ""),
     }
 
