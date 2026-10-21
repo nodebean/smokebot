@@ -10,6 +10,7 @@ import random
 import time
 
 from hashlib import sha1
+from bs4 import BeautifulSoup
 
 from builtins import str
 from builtins import range
@@ -58,7 +59,6 @@ def get(*args, **kwargs):
 
 def get_html(*args, **kwargs):
     return html.fromstring(open(*args, **kwargs).read())
-
 
 def get_xml(*args, **kwargs):
     return etree.fromstring(open(*args, **kwargs).read())

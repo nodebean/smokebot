@@ -66,3 +66,33 @@ def ds9(inp, api_key=None, ep=None):
         r_season = response["Season"]
         r_episode = response["Episode"]
         return "\x02Series\x02: DS9 | \x02Title\x02: {} | \x02Summary\x02: {} | \x02Season\x02: {} - \x02Episode\x02: {} | \x02Air Date\x02: {}".format(title, summary, r_season, r_episode, released)
+
+@hook.api_key("omdbapi")
+@hook.command()
+def voy(inp, api_key=None, ep=None):
+    ep = re.match(r"s[0-9]?[0-9]e[0-9]?[0-9]", inp, re.I)
+    if ep is not None:
+        season, episode = ep[0].lower().split('e')
+        print(season.strip('s'), episode)
+        response = http.get_json("http://www.omdbapi.com/?apikey={}&i=tt0112178&Season={}&Episode={}".format(api_key, season.strip("s"), episode))
+        title = response["Title"]
+        released = response["Released"]
+        summary = response["Plot"]
+        r_season = response["Season"]
+        r_episode = response["Episode"]
+        return "\x02Series\x02: Voyager | \x02Title\x02: {} | \x02Summary\x02: {} | \x02Season\x02: {} - \x02Episode\x02: {} | \x02Air Date\x02: {}".format(title, summary, r_season, r_episode, released)
+
+@hook.api_key("omdbapi")
+@hook.command()
+def ent(inp, api_key=None, ep=None):
+    ep = re.match(r"s[0-9]?[0-9]e[0-9]?[0-9]", inp, re.I)
+    if ep is not None:
+        season, episode = ep[0].lower().split('e')
+        print(season.strip('s'), episode)
+        response = http.get_json("http://www.omdbapi.com/?apikey={}&i=tt0244365&Season={}&Episode={}".format(api_key, season.strip("s"), episode))
+        title = response["Title"]
+        released = response["Released"]
+        summary = response["Plot"]
+        r_season = response["Season"]
+        r_episode = response["Episode"]
+        return "\x02Series\x02: Enterprise | \x02Title\x02: {} | \x02Summary\x02: {} | \x02Season\x02: {} - \x02Episode\x02: {} | \x02Air Date\x02: {}".format(title, summary, r_season, r_episode, released)
